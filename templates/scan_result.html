@@ -7,18 +7,12 @@
 <body>
     <h1>Résultats du Scan de Ports</h1>
 
-    <!-- Afficher le contenu de result à des fins de débogage -->
-    <pre>{{ result | tojson(indent=2) }}</pre>
-
-    <!-- Afficher target_host à des fins de débogage -->
-    <pre>{{ request.form['target_host'] }}</pre>
-
     {% if 'scan' in result %}
         {% if request.form['target_host'] in result['scan'] %}
             <h2>Résultats pour {{ result['scan'][request.form['target_host']]['hostnames'][0]['name'] }}</h2>
             <ul>
                 {% for port, data in result['scan'][request.form['target_host']]['tcp'].items() %}
-                    <li>Port {{ port }} - {{ data['state'] }}</li>
+                    <li>Port {{ port }} - {{ data['state'] }} - Service : {{ data['name'] }} - Version : {{ data['version'] }}</li>
                 {% endfor %}
             </ul>
         {% else %}

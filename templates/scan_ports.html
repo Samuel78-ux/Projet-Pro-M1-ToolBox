@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <link rel="stylesheet" href="/static/scanPort.css">
 
-    <div class="formPort">
-        <h1 class="scanPort">Scan de Ports</h1>
-        <form method="POST" action="/scan_ports">
-            <label for="target_host">Adresse IP de la Cible :</label>
-            <input type="text" id="target_host" name="target_host" required>
-
-            <input type="submit" value="Lancer le Scan">
-        </form>
+    <div class="flex justify-center">
+        <div class="scanPort text-2xl pl-24">Scan de Ports</div>
+     </div>
+            <div class="flex justify-center pt-10">
+                <form method="POST" action="/scan_ports">
+                    <label for="target_host">Adresse IP de la Cible :</label>
+                    <input class="rounded-full border-2 border-blue-400" type="text" id="target_host" name="target_host" required>
+                    <button class="bg-[#1da1f2] pr-2 pl-2 rounded-full text-white">Scan</button>
+                </form>
+            </div>
 
         <!-- Espace pour afficher les résultats du scan -->
-        <div id="scan-results"></div>
-    </div>
+        <div class="flex justify-center">
+            <div id="scan-results"></div>
+        </div>
 
     <!-- Ajoutez ici le code JavaScript pour récupérer et afficher les résultats -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
