@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Votre Titre</title>
+    <!-- Ajoutez ici vos balises meta, liens CSS, etc. -->
+    <link rel="stylesheet" href="/static/header.css">
+    <link rel="stylesheet" href="/static/sidebar.css">
+</head>
+<body>
+    <!-- Inclure le fichier header.html -->
+    {% include './components/header.html' %}
+
+    <!-- Inclure le fichier sidebar.html -->
+    {% include './components/sidebar.html' %}
+
+    <!-- Contenu de la page spécifique sera inclus ici -->
+    {% block content %}{% endblock %}
+
+    <!-- Ajoutez ici vos scripts JavaScript, pied de page, etc. -->
+    <script type="text/javascript" src="/static/sidebar.js"></script>
+    <script type="text/javascript" src="/static/header.js"></script>
+</body>
+</html>

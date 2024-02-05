@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <link rel="stylesheet" href="/static/scanPort.css">
+
+    <div class="formPort">
+        <h1 class="scanPort">Scan de Ports</h1>
+        <form method="POST" action="/scan_ports">
+            <label for="target_host">Adresse IP de la Cible :</label>
+            <input type="text" id="target_host" name="target_host" required>
+
+            <input type="submit" value="Lancer le Scan">
+        </form>
+
+        <!-- Espace pour afficher les résultats du scan -->
+        <div id="scan-results"></div>
+    </div>
+
+    <!-- Ajoutez ici le code JavaScript pour récupérer et afficher les résultats -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("form").submit(function(event) {
+                event.preventDefault();
+                var targetHost = $("#target_host").val();
+                $.post("/scan_ports", { target_host: targetHost }, function(result) {
+                    // Affichez les résultats dans l'élément #scan-results
+                    $("#scan-results").html(result);
+                });
+            });
+        });
+    </script>
+{% endblock %}
